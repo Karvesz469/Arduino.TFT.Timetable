@@ -1,0 +1,55 @@
+#include <Adafruit_GFX.h>    // Core graphics library
+#include <MCUFRIEND_kbv.h>   // Hardware-specific library
+MCUFRIEND_kbv tft;
+
+#include <Fonts/FreeSans9pt7b.h>
+#include <Fonts/FreeSans12pt7b.h>
+#include <Fonts/FreeSerif12pt7b.h>
+#include <Fonts/FreeMonoBold24pt7b.h>
+#include <Fonts/Picopixel.h>
+#include <Fonts/FreeMono9pt7b.h>
+
+#include <FreeDefaultFonts.h>
+
+#define BLACK   0x0000
+#define RED     0xF800
+#define GREEN   0x07E0
+#define WHITE   0xFFFF
+#define GREY    0x8410
+#define BLUE    0x00FF
+#define YELLOW  0xFFE0
+#define MAGENTA 0xF81F
+#define CYAN    0x07FF
+
+void setup() {
+    uint16_t ID = tft.readID();
+ 
+    tft.begin(ID);
+    tft.setRotation(0);
+   tft.fillScreen(BLACK);
+   tft.setRotation(45);
+   showmsgXY(5, 50, 2, &FreeMono9pt7b,WHITE,  "Lesson1");  //Add your Lessons
+   showmsgXY(5, 100, 2, &FreeMono9pt7b,WHITE, "Lesson2");
+   showmsgXY(5, 150, 2, &FreeMono9pt7b,WHITE, "Lesson3");
+   showmsgXY(5, 200, 2, &FreeMono9pt7b,WHITE, "Lesson4");
+   showmsgXY(5, 250, 2, &FreeMono9pt7b,WHITE, "Lesson5");
+   showmsgXY(5, 300, 2, &FreeMono9pt7b,WHITE, "Lesson6");
+}
+void loop() {
+
+
+   
+
+}
+
+void showmsgXY(int x, int y, int sz, const GFXfont *f,int colour_t, const char *msg)
+{
+    int16_t x1, y1;
+    uint16_t wid, ht;
+    tft.setFont(f);
+    tft.setCursor(x, y);
+    tft.setTextColor(colour_t);
+    tft.setTextSize(sz);
+    tft.print(msg);
+    //delay(20);
+}
